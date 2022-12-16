@@ -1,0 +1,84 @@
+en_needMoreSpace=WARNING! The amount of $INSTBASE disk space required to perform this installation is greater than what is available.  Please free up at least $free_up kilobytes in $INSTBASE and attempt this installation again.
+en_vmDownloadError=Error in downloading the VM. Installer exiting...
+en_launch=Launching installer...
+en_jreExtractFailed=The included VM could not be extracted.
+en_invalidUnzip=Invalid unzip command found
+en_checksumPassed=MD5 checksum verification for downloaded JVM passed
+en_corruptedFiles=The size of the extracted files to be installed are corrupted.
+en_tmpCleanup=WARNING! This installation has been interrupted. The installation process will now terminate and the temporary files it is using will be deleted from $ZIPLOC.
+en_downloadLoc2=Download location=$jreDownloadFileName_1
+en_downloadLoc1=Download location=$jreDownloadFileName
+en_downloadedVM2=Downloaded VM Pack using URL=$jvmSpecBuildWithoutVmDirectDownloadUrl
+en_downloadedVM1=Downloaded VM Pack using URL=$jvmSpecBuildWithoutVMNotFoundDownloadUrl
+en_installInvalidUnzip=InstallAnywhere could not find a supported unzip program on the system, this should not have any impact on the installation process.
+en_noEnoughSpace=WARNING: $INSTBASE does not have enough disk space! Attempting to use $HOME for install base and tmp dir.
+en_extractJRE=Extracting the JRE from the installer archive...
+en_jreUnzipFailed=The included VM could not be uncompressed (GZIP/UNCOMPRESS).
+en_unpackJRE=Unpacking the JRE...
+en_spaceUndetermined=WARNING! The amount of $INSTBASE disk space required and/or available could not be determined.  The installation will attempted anyway.
+en_jreUntarFailed=The included VM could not be unarchived (TAR).
+en_default=default
+en_reDownload=Please try to download the installer again and make sure that you download using 'binary' mode.  Please do not attempt to install this currently downloaded copy.
+en_configure=Configuring the installer for this system's environment...
+en_prepareInstall=Preparing to install
+en_checksumFailed=Error!! MD5 checksum verification for downloaded JVM failed. Installer exiting...
+en_extractRes=Extracting the installation resources from the installer archive...
+en_defaultCase=default case
+en_noPermission=The temporary install directory: $INSTBASE does not exist or you do not have permission to write to it.
+en_iatempdirNotPresent=You have used the IATEMPDIR to set the install base and tmp dir for this installation.  However, the directory $INSTBASE does not exist or is not a directory.  Please choose a valid directory.
+ja_needMoreSpace=警告! このインストールに必要な $INSTBASE ディスク領域は、使用可能な領域を超えています。 $INSTBASE に $free_up キロバイト以上の空き領域を作って、インストールを再試行してください。
+ja_vmDownloadError=VM のダウンロード中にエラーが発生しました。インストーラーを終了しています...
+ja_launch=インストーラーを起動しています...
+ja_jreExtractFailed=含まれる VM を抽出できませんでした。
+ja_invalidUnzip=無効な unzip コマンドが見つかりました
+ja_checksumPassed=ダウンロードされた JVM のMD5 JVM チェックサム検証に合格しました
+ja_corruptedFiles=インストールされる抽出されたファイル サイズに問題があります。
+ja_tmpCleanup=警告 インストールが中断されました。インストール処理が終了し、現在使用中の一時ファイルが $ZIPLOC から削除されます。
+ja_downloadLoc2=ダウンロード場所=$jreDownloadFileName_1
+ja_downloadLoc1=ダウンロード場所=$jreDownloadFileName
+ja_downloadedVM2=URL=$jvmSpecBuildWithoutVmDirectDownloadUrl を使って VM パックをダウンロードする
+ja_downloadedVM1=URL=$jvmSpecBuildWithoutVMNotFoundDownloadUrl を使って VM パックをダウンロードする
+ja_installInvalidUnzip=InstallAnywhere は、システム上でサポートされている解凍プログラムを見つけることができませんでした。インストール処理には影響しません。
+ja_noEnoughSpace=警告: $INSTBASE に十分なディスク領域がありません。インストール ベースおよび一時ディレクトリに $HOME の使用を試みています。
+ja_extractJRE=インストーラー アーカイブから JRE を抽出しています...
+ja_jreUnzipFailed=含まれる VM の圧縮 (GZIP/UNCOMPRESS) を解除できませんでした。
+ja_unpackJRE=JRE を展開しています...
+ja_spaceUndetermined=警告 必要なおよび/または使用可能な $INSTBASE ディスク領域が判別できませんでした。インストールを続行します。
+ja_jreUntarFailed=含まれる VM をアーカイブ (TAR) を展開することができませんでした。
+ja_default=既定
+ja_reDownload=必ず「バイナリ」モードを使って、インストーラーをもう一度ダウンロードしてください。現在ダウンロード済みのコピーをインストールしないでください。
+ja_configure=このシステム環境のインストーラーを構成しています...
+ja_prepareInstall=インストールの準備
+ja_checksumFailed=エラー ダウンロードされた JVM の MD5 チェックサムの検証が失敗しました。インストーラーを終了しています...
+ja_extractRes=インストーラー アーカイブからインストール リソースを抽出しています...
+ja_defaultCase=既定のケース
+ja_noPermission=一時インストール ディレクトリ: $INSTBASE が存在しない、または書き込みアクセス許可がありません。
+ja_iatempdirNotPresent=このインストールのインストール ベースおよび一時ディレクトリが IATEMPDIR を使って設定されていますが、$INSTBASE がディレクトリではない、または存在しません。有効なディレクトリを選択してください。
+zh_CN_needMoreSpace=警告！执行本次安装所需的 $INSTBASE 磁盘空间量大于可用的空间量。请在 $INSTBASE 里释放至少 $free_up 千字节，并再次尝试安装。
+zh_CN_vmDownloadError=下载 VM 时出错。安装程序正在退出...
+zh_CN_launch=正在启动安装程序...
+zh_CN_jreExtractFailed=无法提取已包含的 VM。
+zh_CN_invalidUnzip=找到无效解压命令
+zh_CN_checksumPassed=用于已下载的 JVM 的 MD5 校验和验证通过。
+zh_CN_corruptedFiles=要进行安装的提取文件的大小已损坏。
+zh_CN_tmpCleanup=警告！本次安装已被中断。安装进程将立即终止，正在使用的临时文件将从 $ZIPLOC 中删除。
+zh_CN_downloadLoc2=下载位置=$jreDownloadFileName_1
+zh_CN_downloadLoc1=下载位置=$jreDownloadFileName
+zh_CN_downloadedVM2=使用 URL=$jvmSpecBuildWithoutVmDirectDownloadUrl 下载 VM 包
+zh_CN_downloadedVM1=使用 URL=$jvmSpecBuildWithoutVMNotFoundDownloadUrl 下载 VM 包
+zh_CN_installInvalidUnzip=InstallAnywhere 在该系统上无法找到受支持的解压程序。这应该不会对安装进程造成任何影响。
+zh_CN_noEnoughSpace=警告:$INSTBASE 磁盘空间不足！正在尝试将 $HOME 用于安装基础和 tmp dir。
+zh_CN_extractJRE=正在从安装程序档案中提取 JRE...
+zh_CN_jreUnzipFailed=无法解压（GZIP/UNCOMPRESS）已包含的 VM。
+zh_CN_unpackJRE=正在解包 JRE...
+zh_CN_spaceUndetermined=警告！所需和或可用的 $INSTBASE 磁盘空间空间无法确定。总之将尝试安装。
+zh_CN_jreUntarFailed=无法反归档 (TAR) 已包含的 VM。
+zh_CN_default=默认
+zh_CN_reDownload=请再次尝试下载安装程序，并确保使用“二进制”模式下载。请不要尝试安装当前的下载副本。
+zh_CN_configure=配置该系统环境的安装程序...
+zh_CN_prepareInstall=正在准备进行安装
+zh_CN_checksumFailed=错误！用于已下载的 JVM 的 MD5 校验和验证失败。安装程序正在退出...
+zh_CN_extractRes=正在从安装程序档案中提取安装资源...
+zh_CN_defaultCase=默认事例
+zh_CN_noPermission=临时安装目录：$INSTBASE 不存在或您没有写入权限。
+zh_CN_iatempdirNotPresent=您已使用 IATEMPDIR 设置本次安装的安装基础和 tmp dir。但是，目录 $INSTBASE 不存在或不是目录。请选择有效目录。

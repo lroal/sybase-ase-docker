@@ -1,14 +1,14 @@
-version: "3.7"
+version: "3.8"
 
 services:
   ase-server:
-    image: blieusong/ase-server:latest
+    image: lroal/ase-server
     hostname: ase-server
     working_dir: /home/sybase
     volumes:
       - sybase-data:/data
     ports:
-      - 5000:5000
+      - 45000:5000
     tty: true
     entrypoint: "/home/sybase/bin/entrypoint.sh"
 
