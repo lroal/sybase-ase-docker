@@ -19,7 +19,7 @@ You will need a recent x64 Linux Docker host with
 
 # Getting Started
 I share the image on Docker Hub : 
-https://hub.docker.com/repository/docker/blieusong/ase-server.
+https://hub.docker.com/repository/docker/larsroald/ase-server.
 
 You can get started by simply firing up **docker-compose** from the root folder of this project:
 
@@ -33,14 +33,14 @@ so make sure `/var/lib/docker` has enough space to host your databases.
 You can then access the ASE server on port 5000 of the Docker host.
 
 # Creating Your Own Database
-The image (**blieusong/ase-server**) I share is configured with 2k pagesize and
+The image (**lroal/ase-server**) I share is configured with 16k pagesize and
 *iso_1* charset. It requires 2Gb of memory. You can use different settings:
 
 1. Update `ressources/ase.rs` according to your needs,
 2. Build the Docker image. 
 
     ```bash
-    $ docker build --build-arg ASE_INSTALL_TGZ="http://whatever.com/ASE_Suite.linuxamd64.tgz" -t blieusong/ase-server .
+    $ docker build -t larsroald/ase-server .
     ```
 
    The **ASE_INSTALL_TGZ** variable can also be set in the `Dockerfile` itself

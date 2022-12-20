@@ -35,13 +35,18 @@ RUN apt update \
 && chown -R sybase:sybase /opt/sap
 # && ["/bin/bash", "-c", "echo \"sybase\nsybase\" | (passwd sybase)"] \
 ENV PATH=/home/sybase/bin:$PATH
-COPY --chown=sybase resources/ase.rs /home/sybase/cfg/
+ENV LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/
+COPY --chown=sybase resources/ase.rs /home/sybase/config/
 # We create the database itself but then zip it and delete \
 # the data folder to keep the image as small as possible. \
 # This archive is unpacked in /data upon first launch. /data \
 # should be bound to a Docker volume for persistence. \
-RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/cfg/ase.rs -D /opt/sap \
+RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/config/ase.rs -D /opt/sap \
 && tar -czf /tmp/data.tar.gz /data && rm -fr /data
+#&& export LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/ \
+#RUN chown -R sybase:sybase /home/sybase
+#RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -SDB_TEST binary.srt utf8
+#RUN /opt/sap/ASE-16_0/bin/charset -Usa -Psybase -SDB_TEST binary.srt utf8
 COPY --chown=sybase resources/ase_start.sh /home/sybase/bin/
 COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
 COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
@@ -54,6 +59,8 @@ RUN apt update \
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 RUN mkdir /opt/sap
 RUN mkdir /home/sybase
+ENV LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/
+ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp
 COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase

@@ -11,8 +11,8 @@ USER_INSTALL_DIR=/opt/sap
 
 #Choose Install Set
 #------------------
-CHOSEN_FEATURE_LIST=fase_srv,fasecmap,fase_cagent
-CHOSEN_INSTALL_FEATURE_LIST=fase_srv,fasecmap,fase_cagent
+CHOSEN_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql
+CHOSEN_INSTALL_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql
 CHOSEN_INSTALL_SET=Custom
 
 #Choose Product License Type
@@ -39,4 +39,5 @@ SY_CONFIG_TXT_SERVER=false
 #Other
 #---------------------
 SY_CFG_ASE_CHARSET=utf8
+SY_CFG_ASE_SORTORDER=bin_utf8
 #SY_CFG_ASE_PAGESIZE=16k

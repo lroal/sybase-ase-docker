@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   ase-server:
-    image: lroal/ase-server
+    image: larsroald/ase-server    
     hostname: ase-server
     working_dir: /home/sybase
     volumes:

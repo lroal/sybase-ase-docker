@@ -2,6 +2,8 @@ sybinit.release_directory: USE_DEFAULT
 sybinit.product: sqlsrv
 sqlsrv.server_name: DB_TEST
 sqlsrv.sa_password: sybase
+sqlsrv.sort_order: USE_DEFAULT
+sqlsrv.default_characterset: USE_DEFAULT
 sqlsrv.new_config: yes
 sqlsrv.do_add_server: yes
 sqlsrv.network_protocol_list: tcp
