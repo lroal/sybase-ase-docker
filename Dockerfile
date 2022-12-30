@@ -64,3 +64,4 @@ ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp
 COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase
+ENTRYPOINT ["/home/sybase/bin/entrypoint.sh"]

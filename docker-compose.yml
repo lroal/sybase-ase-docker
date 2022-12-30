@@ -9,8 +9,8 @@ services:
       - sybase-data:/data
     ports:
       - 45000:5000
-    tty: true
-    entrypoint: "/home/sybase/bin/entrypoint.sh"
+    # tty: true
+    # entrypoint: "/home/sybase/bin/entrypoint.sh"
 
 volumes:
   sybase-data:
