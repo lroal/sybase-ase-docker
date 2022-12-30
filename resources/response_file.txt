@@ -11,8 +11,8 @@ USER_INSTALL_DIR=/opt/sap
 
 #Choose Install Set
 #------------------
-CHOSEN_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql
-CHOSEN_INSTALL_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql
+CHOSEN_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql,fodbcl
+CHOSEN_INSTALL_FEATURE_LIST=fase_srv,fasecmap,fase_cagent,fdbisql,fodbcl
 CHOSEN_INSTALL_SET=Custom
 
 #Choose Product License Type
