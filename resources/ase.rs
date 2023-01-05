@@ -10,11 +10,11 @@ sqlsrv.network_protocol_list: tcp
 sqlsrv.network_hostname_list: 0.0.0.0
 sqlsrv.network_port_list: 5000
 sqlsrv.application_type: USE_DEFAULT
-sqlsrv.server_page_size: 2048
+sqlsrv.server_page_size: 16k
 sqlsrv.force_buildmaster: no
 sqlsrv.master_device_physical_name: /data/master.dat
-sqlsrv.master_device_size: 78
-sqlsrv.master_database_size: 39
+sqlsrv.master_device_size: USE_DEFAULT
+sqlsrv.master_database_size: USE_DEFAULT
 sqlsrv.errorlog: USE_DEFAULT
 sqlsrv.do_upgrade: no
 sqlsrv.sybsystemprocs_device_physical_name: /data/sybsystemprocs.dat

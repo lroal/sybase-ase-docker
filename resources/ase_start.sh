@@ -6,19 +6,21 @@ SERVER_NAME=$1
 echo -en "Starting server \e[0;34m${SERVER_NAME}\e[0m: "
 
 startserver -f $SYBASE/$SYBASE_ASE/install/RUN_${SERVER_NAME} >/dev/null
-sleep 5
-$SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -S${SERVER_NAME} binary.srt utf8
 
-cat <<-EOSQL > init1.sql
-use master
-go
-sp_configure 'default sortorder id', 50, 'utf8'
-go
-EOSQL
- 
-$SYBASE/$SYBASE_ASE/bin/isql -Usa -Psybase -S{SERVER_NAME}  -i"./init1.sql"
+isql=( isql -Usa -SDB_TEST -Psybase )
 
-startserver -f $SYBASE/$SYBASE_ASE/install/RUN_${SERVER_NAME} >/dev/null
+for i in {30..0}; do
+	if echo 'SELECT 1 go' | "${isql[@]}" &> /dev/null; then
+		break;
+	fi
+	echo 'ASE init process in progress'
+	sleep 1
+done
+
+# sleep 20
+# tail -n 100 $SYBASE/$SYBASE_ASE/install/DB_TEST.log
+
+
 
 ret=$?
 

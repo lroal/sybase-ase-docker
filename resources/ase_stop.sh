@@ -6,7 +6,7 @@ SERVER_NAME=$1
 echo -en "Stop server \e[0;34m${SERVER_NAME}\e[0m: "
 
 isql -Usa -S${SERVER_NAME} -Psybase < $SYBASE/$SYBASE_ASE/upgrade/shutdown.sql > /dev/null
-
+sleep 1
 ret=$?
 
 if [ ${ret} -ne 0 ]; then
