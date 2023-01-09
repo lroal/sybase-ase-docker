@@ -47,7 +47,7 @@ EOF
         echo "Waiting for restart..."
 	    sleep 1
     done
-    sleep 2
+    sleep 10
 	
     # while [[ $ISDONE -eq 0 ]]; do
     #     echo "Waiting for restart..."
@@ -57,7 +57,7 @@ EOF
     #     ISDONE=$?
     # done
     # sleep 20
-    /home/sybase/bin/ase_stop.sh DB_TEST 
+    /home/sybase/bin/ase_stop.sh DB_TEST     
     # sleep 5   
 fi
 tail -n 50  $SYBASE/$SYBASE_ASE/install/DB_TEST.log
