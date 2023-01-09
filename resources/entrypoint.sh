@@ -17,26 +17,50 @@ if [ ! -f "/data/master.dat" ]; then
     ret=$?
     cd -
     /home/sybase/bin/ase_start.sh DB_TEST
-    $SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -SDB_TEST binary.srt utf8
+    $SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -SDB_TEST nocase.srt utf8
+#     isql -Usa -Psybase -SDB_TEST -J iso_1 << EOF
+# sp_configure 'default character set', 190
+# go
+# EOF
+    echo "Restart"
+    /home/sybase/bin/ase_stop.sh DB_TEST 
+    # sleep 5   
+    /home/sybase/bin/ase_start.sh DB_TEST
+    # sleep 20
     isql -Usa -Psybase -SDB_TEST -J iso_1 << EOF
 sp_configure 'default character set', 190
 go
-sp_configure 'default sortorder id', 50
+sp_configure 'default sortorder id', 101, 'utf8'
+go
+sp_configure 'default sortorder id', 101, 'utf8_nocase'
 go
 EOF
-    /home/sybase/bin/ase_stop.sh DB_TEST    
+    tail -n 50  $SYBASE/$SYBASE_ASE/install/DB_TEST.log
+    echo "Restart 2"
+    /home/sybase/bin/ase_stop.sh DB_TEST 
+    # sleep 5   
     /home/sybase/bin/ase_start.sh DB_TEST
-    i=0
-    ISDONE=0
     echo "STARTING... (about 30 sec)"
-    while [[ $ISDONE -eq 0 ]] || [[ $i -lt 30 ]]; do
+    # sleep 30
+    while ! grep "SySAM:" $SYBASE/$SYBASE_ASE/install/DB_TEST.log > /dev/null
+    do
         echo "Waiting for restart..."
 	    sleep 1
-	    i=$((i+1))
-        count=$(grep -c "'bin_utf8'" $SYBASE/$SYBASE_ASE/install/DB_TEST.log)
-        ISDONE=$?
     done
+    sleep 2
+	
+    # while [[ $ISDONE -eq 0 ]]; do
+    #     echo "Waiting for restart..."
+	#     sleep 1
+	#     i=$((i+1))
+    #     count=$(grep -c "'utf8_nocase'" $SYBASE/$SYBASE_ASE/install/DB_TEST.log)
+    #     ISDONE=$?
+    # done
+    # sleep 20
+    /home/sybase/bin/ase_stop.sh DB_TEST 
+    # sleep 5   
 fi
+tail -n 50  $SYBASE/$SYBASE_ASE/install/DB_TEST.log
 
 if [ $ret -ne 0 ]; then
     echo "Error while extracting database files. Exiting."
@@ -47,4 +71,4 @@ fi
 
 echo 'Waiting for server to start in order to create the default schema, login and user'
 
-tail -n -f $SYBASE/$SYBASE_ASE/install/DB_TEST.log
+tail -f $SYBASE/$SYBASE_ASE/install/DB_TEST.log

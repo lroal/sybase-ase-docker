@@ -39,5 +39,5 @@ SY_CONFIG_TXT_SERVER=false
 #Other
 #---------------------
 SY_CFG_ASE_CHARSET=utf8
-SY_CFG_ASE_SORTORDER=bin_utf8
+SY_CFG_ASE_SORTORDER=utf8_nocase
 #SY_CFG_ASE_PAGESIZE=16k
