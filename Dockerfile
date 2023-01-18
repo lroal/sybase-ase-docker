@@ -54,11 +54,13 @@ COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
 FROM final
 RUN apt update \
 && apt upgrade -y \
-&& apt -y install libaio1 \
+&& apt -y install libaio1 dos2unix \
 && apt -y autoremove
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 RUN mkdir /opt/sap
 RUN mkdir /home/sybase
+RUN mkdir /docker-entrypoint.d
+
 ENV LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/
 ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp

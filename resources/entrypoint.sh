@@ -71,4 +71,26 @@ fi
 
 echo 'Waiting for server to start in order to create the default schema, login and user'
 
+DIR=/docker-entrypoint.d
+
+# convert line endings from dos to unix.
+find $DIR -type f -name "*.sql" -exec dos2unix {} +
+find $DIR -type f -name "*.sh" -exec dos2unix {} +
+# remove leading whitespace/tabs before GO. Otherwise ISQL gives syntax error.
+find $DIR -type f -name "*.sql" -exec sed -i 's/^[ \t]*GO/GO/gI' {} +
+
+echo "Executing script in folder $DIR"
+for SCRIPT in $DIR/*.sh
+do
+    if [ -f $SCRIPT -a -x $SCRIPT ]
+    then
+        $SCRIPT
+    else
+        echo "The script $SCRIPT is not executable"
+    fi
+done
+
+# Execute the command passed through CMD of the Dockerfile or command when creating a container
+exec "$@"
+
 tail -f $SYBASE/$SYBASE_ASE/install/DB_TEST.log

@@ -9,7 +9,7 @@ startserver -f $SYBASE/$SYBASE_ASE/install/RUN_${SERVER_NAME} >/dev/null
 
 isql=( isql -Usa -SDB_TEST -Psybase )
 
-for i in {30..0}; do
+for i in {40..0}; do
 	if echo 'SELECT 1 go' | "${isql[@]}" &> /dev/null; then
 		break;
 	fi
