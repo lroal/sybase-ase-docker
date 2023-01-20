@@ -41,15 +41,17 @@ COPY --chown=sybase resources/ase.rs /home/sybase/config/
 # the data folder to keep the image as small as possible. \
 # This archive is unpacked in /data upon first launch. /data \
 # should be bound to a Docker volume for persistence. \
-RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/config/ase.rs -D /opt/sap \
-&& tar -czf /tmp/data.tar.gz /data && rm -fr /data
+RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/config/ase.rs -D /opt/sap
+COPY --chown=sybase resources/ase_start.sh /home/sybase/bin/
+COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
+COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
+COPY --chown=sybase resources/to_utf8.sh /home/sybase/bin/
+RUN /home/sybase/bin/to_utf8.sh
+RUN tar -czf /tmp/data.tar.gz /data && rm -fr /data
 #&& export LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/ \
 #RUN chown -R sybase:sybase /home/sybase
 #RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -SDB_TEST binary.srt utf8
 #RUN /opt/sap/ASE-16_0/bin/charset -Usa -Psybase -SDB_TEST binary.srt utf8
-COPY --chown=sybase resources/ase_start.sh /home/sybase/bin/
-COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
-COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
 
 FROM final
 RUN apt update \
@@ -66,6 +68,4 @@ ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp
 COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase
-HEALTHCHECK --interval=3s --timeout=3s \
-    CMD test -f /home/sybase/ready.txt || exit 1
 ENTRYPOINT ["/home/sybase/bin/entrypoint.sh"]
