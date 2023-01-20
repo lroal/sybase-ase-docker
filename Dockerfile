@@ -71,4 +71,5 @@ COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase
 HEALTHCHECK --interval=3s --timeout=0.5s \
   CMD /home/sybase/bin/health.sh || exit 1
+EXPOSE 5000
 ENTRYPOINT ["/home/sybase/bin/entrypoint.sh"]
