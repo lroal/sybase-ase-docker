@@ -46,6 +46,7 @@ COPY --chown=sybase resources/ase_start.sh /home/sybase/bin/
 COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
 COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
 COPY --chown=sybase resources/to_utf8.sh /home/sybase/bin/
+COPY --chown=sybase resources/health.sh /home/sybase/bin/
 RUN /home/sybase/bin/to_utf8.sh
 RUN tar -czf /tmp/data.tar.gz /data && rm -fr /data
 #&& export LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/ \
@@ -68,4 +69,6 @@ ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp
 COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase
+HEALTHCHECK --interval=3s --timeout=0.5s \
+  CMD /home/sybase/bin/health.sh || exit 1
 ENTRYPOINT ["/home/sybase/bin/entrypoint.sh"]

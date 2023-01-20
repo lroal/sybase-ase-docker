@@ -2,8 +2,6 @@
 
 . /opt/sap/SYBASE.sh
 
-ret=0
-
 /home/sybase/bin/ase_start.sh DB_TEST
 $SYBASE/$SYBASE_ASE/bin/charset -Usa -Psybase -SDB_TEST nocase.srt utf8
 echo "Restart"
