@@ -90,6 +90,7 @@ do
     fi
 done
 
+echo "Server is ready" > /home/sybase/ready.txt
 # Execute the command passed through CMD of the Dockerfile or command when creating a container
 exec "$@"
 

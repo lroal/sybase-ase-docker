@@ -66,4 +66,6 @@ ENV PATH=/home/sybase/bin:$PATH
 COPY --from=builder --chown=sybase /tmp /tmp
 COPY --from=builder --chown=sybase /opt/sap /opt/sap
 COPY --from=builder --chown=sybase /home/sybase /home/sybase
+HEALTHCHECK --interval=3s --timeout=3s \
+    CMD test -f /home/sybase/ready.txt || exit 1
 ENTRYPOINT ["/home/sybase/bin/entrypoint.sh"]
