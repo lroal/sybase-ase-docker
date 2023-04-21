@@ -90,7 +90,7 @@ docker container ls
 ```
 Commit the image and push it:
 ```
-docker container commit c16378f943fe rhel-httpd:latest
+docker container commit c16378f943fe larsroald/ase-server:latest
 docker image push larsroald/ase-server
 ```
 # Technical Details
