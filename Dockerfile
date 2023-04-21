@@ -2,6 +2,7 @@ FROM ubuntu:20.04 as final
 FROM ubuntu:20.04 as builder
 COPY resources/response_file.txt /tmp
 COPY resources/ASE_Suite.linuxamd64.tgz /tmp/
+
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 
 # needed by the ASE installer
@@ -42,6 +43,10 @@ COPY --chown=sybase resources/ase.rs /home/sybase/config/
 # This archive is unpacked in /data upon first launch. /data \
 # should be bound to a Docker volume for persistence. \
 RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/config/ase.rs -D /opt/sap
+RUN sed -i 's/PE=EE/PE=DE/g' /opt/sap/ASE-16_0/sysam/DB_TEST.properties
+RUN sed -i 's/LT=EV/LT=DT/g' /opt/sap/ASE-16_0/sysam/DB_TEST.properties
+RUN sed -i 's/PE=EE/PE=DE/g' /opt/sap/ASE-16_0/sysam/sysam.properties.template
+RUN sed -i 's/LT=EV/LT=DT/g' /opt/sap/ASE-16_0/sysam/sysam.properties.template
 COPY --chown=sybase resources/ase_start.sh /home/sybase/bin/
 COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
 COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/

@@ -82,6 +82,17 @@ database session. For example, using [FreeTDS](https://www.freetds.org)'s
    ```
    fisql -I${THIS_PROJECT_FOLDER}/config/freetds.conf -Usa -Psybase -SDB_TEST
    ```
+
+# Pushing to docker hub
+Find find sha of the image you want to commit by running:  
+```
+docker container ls
+```
+Commit the image and push it:
+```
+docker container commit c16378f943fe rhel-httpd:latest
+docker image push larsroald/ase-server
+```
 # Technical Details
 
 Feel free to change these in `ase.rs` in the `ressources` folder.
