@@ -2,6 +2,7 @@ FROM ubuntu:20.04 as final
 FROM ubuntu:20.04 as builder
 ARG ASE_URL
 COPY resources/response_file.txt /tmp
+RUN mkdir -p /tmp/ebf30399
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 
 # needed by the ASE installer
