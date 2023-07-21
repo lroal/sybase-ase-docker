@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Monthly build docker
 on:
   schedule:
     - cron: "0 0 * * *"

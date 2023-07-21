@@ -1,9 +1,7 @@
-name: GitFlow Build and Push Docker Image
+name: Build Docker on push
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ master ]
 
 jobs:
   gitflow_build_and_push:
@@ -22,7 +20,7 @@ jobs:
       - name: GitFlow Setup
         run: |
           git fetch --all
-          git checkout main
+          git checkout master
           git checkout -b develop origin/develop
 
       - name: Build and Push Docker Image
