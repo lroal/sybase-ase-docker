@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 as final
 FROM ubuntu:20.04 as builder
-ARG DOWNLOAD_URL
+ARG ASE_URL
 COPY resources/response_file.txt /tmp
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 
@@ -8,7 +8,7 @@ RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 RUN apt update \
 && apt upgrade -y \
 && apt -y install curl libaio1 unzip
-RUN curl -L -o /tmp/ASE_Suite.linuxamd64.tgz ${DOWNLOAD_URL}
+RUN curl -L -o /tmp/ASE_Suite.linuxamd64.tgz ${ASE_URL}
 RUN cd /tmp && tar -xzf ASE_Suite.linuxamd64.tgz -C /tmp/ebf30399/
 RUN cd /tmp ./ebf30399/setup.bin -f /tmp/response_file.txt -i silent -DAGREE_TO_SAP_LICENSE=true -DRUN_SILENT=true \
 && rm -rf /tmp/* \

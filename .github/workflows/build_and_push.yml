@@ -21,7 +21,7 @@ jobs:
       - name: Build and Push Docker Image
         env:
           DOCKER_REPO: larsroald/ase-server
-          DOWNLOAD_URL: ${{ secrets.DOWNLOAD_URL }}
+          ASE_URL: ${{ secrets.ASE_URL }}
         run: |
-          docker build -t $DOCKER_REPO --build-arg DOWNLOAD_URL=${DOWNLOAD_URL} .
+          docker build -t $DOCKER_REPO --build-arg ASE_URL=${ASE_URL} .
           docker push $DOCKER_REPO
