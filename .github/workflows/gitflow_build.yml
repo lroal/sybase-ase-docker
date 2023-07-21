@@ -17,11 +17,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: GitFlow Setup
-        run: |
-          git fetch --all
-          git checkout master
-          git checkout -b develop origin/develop
+      # - name: GitFlow Setup
+      #   run: |
+      #     git fetch --all
+      #     git checkout master
 
       - name: Build and Push Docker Image
         env:
