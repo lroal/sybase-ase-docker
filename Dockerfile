@@ -53,7 +53,11 @@ COPY --chown=sybase resources/ase_stop.sh /home/sybase/bin/
 COPY --chown=sybase resources/entrypoint.sh /home/sybase/bin/
 COPY --chown=sybase resources/to_utf8.sh /home/sybase/bin/
 COPY --chown=sybase resources/health.sh /home/sybase/bin/
+RUN chmod +x /home/sybase/bin/ase_start.sh
+RUN chmod +x /home/sybase/bin/ase_stop.sh
+RUN chmod +x /home/sybase/bin/entrypoint.sh
 RUN chmod +x /home/sybase/bin/to_utf8.sh
+RUN chmod +x /home/sybase/bin/health.sh
 RUN /home/sybase/bin/to_utf8.sh
 RUN tar -czf /tmp/data.tar.gz /data && rm -fr /data
 #&& export LD_LIBRARY_PATH=/opt/sap/OCS-16_0/lib3p64/ \
