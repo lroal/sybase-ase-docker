@@ -1,7 +1,7 @@
 name: Monthly build docker
 on:
   schedule:
-    - cron: "0 0 1 */2 *"
+    - cron: "0 0 1 * *"
 
 jobs:
   build_and_push:
