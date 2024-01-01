@@ -43,6 +43,7 @@ COPY --chown=sybase resources/ase.rs /home/sybase/config/
 # the data folder to keep the image as small as possible. \
 # This archive is unpacked in /data upon first launch. /data \
 # should be bound to a Docker volume for persistence. \
+# trigger build
 RUN . /opt/sap/SYBASE.sh && $SYBASE/$SYBASE_ASE/bin/srvbuildres -r /home/sybase/config/ase.rs -D /opt/sap
 RUN sed -i 's/PE=EE/PE=DE/g' /opt/sap/ASE-16_0/sysam/DB_TEST.properties
 RUN sed -i 's/LT=EV/LT=DT/g' /opt/sap/ASE-16_0/sysam/DB_TEST.properties
