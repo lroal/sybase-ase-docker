@@ -15,7 +15,7 @@ on Docker Hub (see Getting Started).
 You will need a recent x64 Linux Docker host with
 - at *least* 1GB of free disk space
 - 2GB of *available* RAM for the ASE server (you can change this in the
-  ressource file)
+  ressource file).
 
 # Getting Started
 I share the image on Docker Hub : 
