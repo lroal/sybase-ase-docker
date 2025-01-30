@@ -4,11 +4,11 @@ ARG ASE_URL
 COPY resources/response_file.txt /tmp
 RUN mkdir -p /tmp/ebf30399
 RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
-
 # needed by the ASE installer
 RUN apt update \
 && apt upgrade -y \
 && apt -y install curl libaio1 unzip
+RUN ASE_URL_ENCODED=$(echo -n "$ase_url" | base64) && echo "Encoded ase_url: $ASE_URL_ENCODED"
 RUN echo "Starting download of ASE_Suite from URL: ${ASE_URL}" \
     && curl -L -o /tmp/ASE_Suite.linuxamd64.tgz "${ASE_URL}" \
     && echo "Downloaded ASE_Suite to: /tmp/ASE_Suite.linuxamd64.tgz"
