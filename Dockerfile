@@ -9,7 +9,9 @@ RUN groupadd sybase && useradd -g sybase -s /bin/bash sybase
 RUN apt update \
 && apt upgrade -y \
 && apt -y install curl libaio1 unzip
-RUN curl -L -o /tmp/ASE_Suite.linuxamd64.tgz ${ASE_URL}
+RUN echo "Starting download of ASE_Suite from URL: ${ASE_URL}" \
+    && curl -L -o /tmp/ASE_Suite.linuxamd64.tgz "${ASE_URL}" \
+    && echo "Downloaded ASE_Suite to: /tmp/ASE_Suite.linuxamd64.tgz"
 RUN cd /tmp && tar -xzf ASE_Suite.linuxamd64.tgz -C /tmp/ebf30399/
 RUN cd /tmp && ./ebf30399/setup.bin -f /tmp/response_file.txt -i silent -DAGREE_TO_SAP_LICENSE=true -DRUN_SILENT=true \
 && rm -rf /tmp/* \
