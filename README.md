@@ -159,5 +159,6 @@ this image and tweak the settings:
 <!-- Trigger job 05.06.2025 -->
 <!-- Trigger job 16.01.2025 -->
 <!-- Trigger job 15.09.2025 -->
+<!-- Trigger job 05.08.2026 -->
 <!-- Trigger job 19.11.2025 -->
 <!-- Trigger job 22.04.2026 -->
